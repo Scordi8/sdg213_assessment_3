@@ -1,6 +1,13 @@
 using UnityEngine;
 using UnityEditor;
- 
+
+/* This code is not originally mine.
+ * Source : https://www.brechtos.com/hiding-or-disabling-inspector-properties-using-propertydrawers-within-unity-5/
+ * I have made modifications to allow for a second condition
+ * 
+ * If at any point, more then 2 conditions are required, inform Scott (Scordi8#0001, me, who wrote this comment) and I'll re-write code for unlimited conditions.
+ */
+
 [CustomPropertyDrawer(typeof(ConditionalHideAttribute))]
 public class ConditionalHidePropertyDrawer : PropertyDrawer
 {

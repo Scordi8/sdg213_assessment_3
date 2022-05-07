@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* EngineBase is the component resposible for all direct movement.
+ * If *anything* moves independantly, it should be done via EngineBase
+ */
 
 [RequireComponent(typeof(Rigidbody))]
 
@@ -17,7 +20,7 @@ public class EngineBase : MonoBehaviour
     [ConditionalHide("UseConstantMovement", true)]
     public bool UseOrientation = true;
     [ConditionalHide("UseConstantMovement", "UseOrientation", true)]
-    public Vector3 OrientationOffset = new Vector3(0, 0, 0);
+    public Vector3 OrientationOffset = new Vector3(0, 0, 0); // Offset for manual adjustment if the orientation of the object doesn't match directions
 
 
     // Editor exposed fields for controlling constant rotation
@@ -45,18 +48,22 @@ public class EngineBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (UseConstantMovement)
+        if (UseConstantMovement) // Only apply Constant Movement if it's enabled 
         {
+            // dir need to be copied here because we don't want to change the direction variable
             Vector3 dir = direction;
-            if (UseOrientation) {dir = Quaternion.Euler(-transform.localRotation.eulerAngles) * dir;}
+            if (UseOrientation) // If using orientation, rotate the force direction to match the orientation of the object
+                { dir = Quaternion.Euler(-transform.localRotation.eulerAngles + OrientationOffset) * dir;} 
             Move(dir * MovementSpeed);
         }
-        if (UseConstantRotation)
+        if (UseConstantRotation) // Only apply Constant Rotation if it's enabled 
         {
             Rotate(RotationAxis, RotationSpeed);
         }
     }
 
+    // Public movment and rotation functions. these are the only things that should be called on EngineBase.
+    // They are currently defined as functions rather then expression bodies, as the method is expected to change
     public void Move(Vector3 velocity)
     {
         body.AddForce(velocity);

@@ -16,6 +16,8 @@ public class EngineBase : MonoBehaviour
     public float MovementSpeed = 100f;
     [ConditionalHide("UseConstantMovement", true)]
     public bool UseOrientation = true;
+    [ConditionalHide("UseConstantMovement", "UseOrientation", true)]
+    public Vector3 OrientationOffset = new Vector3(0, 0, 0);
 
 
     // Editor exposed fields for controlling constant rotation

@@ -8,6 +8,7 @@ public class ConditionalHideAttribute : PropertyAttribute
 {
     //The name of the bool field that will be in control
     public string ConditionalSourceField = "";
+    public string ConditionalSourceField2 = "";
     //TRUE = Hide in inspector / FALSE = Disable in inspector 
     public bool HideInInspector = false;
 
@@ -20,6 +21,13 @@ public class ConditionalHideAttribute : PropertyAttribute
     public ConditionalHideAttribute(string conditionalSourceField, bool hideInInspector)
     {
         this.ConditionalSourceField = conditionalSourceField;
+        this.HideInInspector = hideInInspector;
+    }
+
+    public ConditionalHideAttribute(string conditionalSourceField, string conditionalSourceField2, bool hideInInspector)
+    {
+        this.ConditionalSourceField = conditionalSourceField;
+        this.ConditionalSourceField2 = conditionalSourceField2;
         this.HideInInspector = hideInInspector;
     }
 }

@@ -16,6 +16,8 @@ public class ConditionalHideAttribute : PropertyAttribute
     //The name of the bool fields that will be in control
     public string ConditionalSourceField = "";
     public string ConditionalSourceField2 = "";
+    public string[] MultiConditionalField;
+    public bool usemulti = false;
     //TRUE = Hide in inspector / FALSE = Disable in inspector 
     public bool HideInInspector = false;
 
@@ -38,6 +40,15 @@ public class ConditionalHideAttribute : PropertyAttribute
     {
         this.ConditionalSourceField = conditionalSourceField;
         this.ConditionalSourceField2 = conditionalSourceField2;
+        this.HideInInspector = hideInInspector;
+    }
+
+    // Overload #3, uses a string[] instead of set values. can use any amount
+    public ConditionalHideAttribute(string[] ConditionalSourceFields, bool hideInInspector)
+    {
+
+        this.MultiConditionalField = ConditionalSourceFields;
+        this.usemulti = true;
         this.HideInInspector = hideInInspector;
     }
 }

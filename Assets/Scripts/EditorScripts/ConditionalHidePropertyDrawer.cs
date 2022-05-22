@@ -45,25 +45,41 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
     {
         bool enabled = true;
         string propertyPath = property.propertyPath; //returns the property path of the property we want to apply the attribute to
+        
         string conditionPath = propertyPath.Replace(property.name, condHAtt.ConditionalSourceField); //changes the path to the conditionalsource property path
         string conditionPath2 = propertyPath.Replace(property.name, condHAtt.ConditionalSourceField2);
 
-        SerializedProperty sourcePropertyValue = property.serializedObject.FindProperty(conditionPath);
-        SerializedProperty sourcePropertyValue2 = property.serializedObject.FindProperty(conditionPath2);
-
-        if (sourcePropertyValue != null)
+        if (condHAtt.usemulti)
         {
-            enabled = sourcePropertyValue.boolValue;
+            bool use = true;
+            SerializedProperty loopproperties;
+            foreach (string arg in condHAtt.MultiConditionalField)
+            {
+                string argpath = propertyPath.Replace(property.name, arg);
+                loopproperties = property.serializedObject.FindProperty(argpath);
+                use = use && loopproperties.boolValue;
+            }
+            enabled = use;
         }
         else
-        {
-            Debug.LogWarning("Attempting to use a ConditionalHideAttribute but no matching SourcePropertyValue found in object: " + condHAtt.ConditionalSourceField);
-        }
-        if (sourcePropertyValue2 != null)
-        {
-            enabled = sourcePropertyValue2.boolValue && enabled;
-        }
 
+        {
+            SerializedProperty sourcePropertyValue = property.serializedObject.FindProperty(conditionPath);
+            SerializedProperty sourcePropertyValue2 = property.serializedObject.FindProperty(conditionPath2);
+
+            if (sourcePropertyValue != null)
+            {
+                enabled = sourcePropertyValue.boolValue;
+            }
+            else
+            {
+                Debug.LogWarning("Attempting to use a ConditionalHideAttribute but no matching SourcePropertyValue found in object: " + condHAtt.ConditionalSourceField);
+            }
+            if (sourcePropertyValue2 != null)
+            {
+                enabled = sourcePropertyValue2.boolValue && enabled;
+            }
+        }
         return enabled;
     }
 }

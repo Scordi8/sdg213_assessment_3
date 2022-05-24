@@ -68,7 +68,19 @@ public class EngineBase : MonoBehaviour
     [ConditionalHide("RotateToVelocity")]
 #endif
     public float TurningSpeed = 5f;
-
+#if UNITY_EDITOR
+    [ConditionalHide("RotateToVelocity")]
+#endif
+    public bool _X = true;
+#if UNITY_EDITOR
+    [ConditionalHide("RotateToVelocity")]
+#endif
+    public bool _Y = false;
+#if UNITY_EDITOR
+    [ConditionalHide("RotateToVelocity")]
+#endif
+    public bool _Z = true;
+    private Vector3 allowedAxis;
 
     private Rigidbody body;
     private GameObject trackGO;
@@ -113,7 +125,7 @@ public class EngineBase : MonoBehaviour
 
         if (RotateToVelocity && body.velocity.magnitude > 0.1)
         {
-            Quaternion dirQ = Quaternion.LookRotation(body.velocity);
+            Quaternion dirQ = Quaternion.LookRotation(body.velocity * );
             Quaternion slerp = Quaternion.Slerp(transform.rotation, dirQ, body.velocity.magnitude * TurningSpeed * Time.deltaTime);
             body.MoveRotation(slerp);   
         }
@@ -145,7 +157,7 @@ public class EngineBase : MonoBehaviour
         if (moving == false)
         {
             //body.velocity = body.velocity / 2;
-            body.velocity = Vector3.zero;
+            //body.velocity = Vector3.zero;
         }
     }
     // Vector2 Overload

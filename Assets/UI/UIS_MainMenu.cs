@@ -4,15 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class MainMenu : MonoBehaviour
+public class UIS_MainMenu : MonoBehaviour
 {
-    //When the PlayGame function is called, move to the next level
+    //When the PlayGame function is called, move to the next level, then ensure the game is running
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1f;
     }
 
-    //When the QuitGame function is called, make a debug message saying it was pulled, then quit the game
+    //When the QuitGame function is called, make a debug message saying it was called, then quit the game
     public void QuitGame()
     {
         Debug.Log("QUIT");

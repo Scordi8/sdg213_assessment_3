@@ -303,7 +303,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345922980314227552}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
   m_Height: 1.7
@@ -334,6 +334,9 @@ MonoBehaviour:
   AngularVelocityLimit: 5
   RotateToVelocity: 1
   TurningSpeed: 5
+  _X: 1
+  _Y: 0
+  _Z: 1
 --- !u!114 &2091617019439730843
 MonoBehaviour:
   m_ObjectHideFlags: 0

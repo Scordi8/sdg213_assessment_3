@@ -90,13 +90,20 @@ public class EngineBase : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         if (RotateToVelocity) { trackGO = new GameObject(); }
-
+        allowedAxis = new Vector3(BoolToInt(_X), BoolToInt(_Y), BoolToInt(_Z));
     }
+
+    private int BoolToInt(bool opt) { if (opt) { return 1; } return 0; }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    private Vector3 v3mul(Vector3 a, Vector3 b)
+    {
+        return new Vector3(a.x * b.x, a.y * b.y, a.z * b.z);
     }
 
     private void FixedUpdate()
@@ -125,7 +132,7 @@ public class EngineBase : MonoBehaviour
 
         if (RotateToVelocity && body.velocity.magnitude > 0.1)
         {
-            Quaternion dirQ = Quaternion.LookRotation(body.velocity * );
+            Quaternion dirQ = Quaternion.LookRotation(v3mul(body.velocity, allowedAxis));
             Quaternion slerp = Quaternion.Slerp(transform.rotation, dirQ, body.velocity.magnitude * TurningSpeed * Time.deltaTime);
             body.MoveRotation(slerp);   
         }

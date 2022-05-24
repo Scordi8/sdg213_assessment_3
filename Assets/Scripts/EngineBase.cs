@@ -11,36 +11,62 @@ using UnityEngine;
 public class EngineBase : MonoBehaviour
 {
     // Editor exposed fields for controlling constant movement
+#if UNITY_EDITOR
     [Header("Constant Movement")]
+#endif
     public bool UseConstantMovement = false;
+#if UNITY_EDITOR
     [ConditionalHide("UseConstantMovement", true)]
+#endif
     public Vector3 direction = new Vector3(0, 0, 0);
+#if UNITY_EDITOR
     [ConditionalHide("UseConstantMovement", true)]
+#endif
     public float MovementSpeed = 100f;
+#if UNITY_EDITOR
     [ConditionalHide("UseConstantMovement", true)]
+#endif
     public bool UseOrientation = true;
+#if UNITY_EDITOR
     [ConditionalHide("UseConstantMovement", "UseOrientation", true)]
+#endif
     public Vector3 OrientationOffset = new Vector3(0, 0, 0); // Offset for manual adjustment if the orientation of the object doesn't match directions
 
 
     // Editor exposed fields for controlling constant rotation
+#if UNITY_EDITOR
     [Header("Constant Rotation")]
+#endif
     public bool UseConstantRotation = false;
+#if UNITY_EDITOR
     [ConditionalHide("UseConstantRotation", true)]
+#endif
     public Vector3 RotationAxis = new Vector3(0, 0, 0);
+#if UNITY_EDITOR
     [ConditionalHide("UseConstantRotation", true)]
+#endif
     public float RotationSpeed = 100f;
 
+#if UNITY_EDITOR
     [Header("Limits")]
+#endif
     public bool UseLimits = true;
+#if UNITY_EDITOR
     [ConditionalHide("UseLimits", true)]
+#endif
     public float PositionalVelocityLimit = 20f;
+#if UNITY_EDITOR
     [ConditionalHide("UseLimits", true)]
+#endif
     public float AngularVelocityLimit = 20f;
 
+#if UNITY_EDITOR
     [Header("Misc")]
+#endif
     public bool RotateToVelocity = false;
+#if UNITY_EDITOR
     [ConditionalHide("RotateToVelocity")]
+#endif
     public float TurningSpeed = 5f;
 
 

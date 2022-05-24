@@ -13,6 +13,7 @@ using System.Collections;
     AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
 public class ConditionalHideAttribute : PropertyAttribute
 {
+#if UNITY_EDITOR
     //The name of the bool fields that will be in control
     public string ConditionalSourceField = "";
     public string ConditionalSourceField2 = "";
@@ -51,4 +52,5 @@ public class ConditionalHideAttribute : PropertyAttribute
         this.usemulti = true;
         this.HideInInspector = hideInInspector;
     }
+#endif
 }

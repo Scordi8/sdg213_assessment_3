@@ -30,6 +30,13 @@ public class PlayerCamera : MonoBehaviour
 
             cam.transform.position = drag.transform.position + CameraOffset;
 
+<<<<<<< Updated upstream
+=======
+            //Quaternion rotation = Quaternion.Euler(difference.x, difference.y, difference.z);
+
+            //cam.transform.RotateAround(cam.transform.position, Vector3.left, difference.z);
+
+>>>>>>> Stashed changes
             cam.transform.LookAt(objectToTrack.transform.position, Vector3.forward);
 
         }

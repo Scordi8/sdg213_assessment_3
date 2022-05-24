@@ -11,7 +11,7 @@ using UnityEngine;
 public class EngineBase : MonoBehaviour
 {
     // Editor exposed fields for controlling constant movement
-#if UNITY_EDITOR
+#if UNITY_EDITOR 
     [Header("Constant Movement")]
 #endif
     public bool UseConstantMovement = false;
@@ -125,7 +125,28 @@ public class EngineBase : MonoBehaviour
     // They are currently defined as functions rather then expression bodies, as the method is expected to change
     public void Move(Vector3 velocity)
     {
-        body.AddForce(velocity);
+        bool moving;
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            moving = true;
+        }
+        else
+        {
+            moving = false;
+        }
+        if (body.velocity.magnitude > PositionalVelocityLimit)
+        {
+
+        }
+        else
+        {
+            body.AddForce(velocity);
+        }
+        if (moving == false)
+        {
+            //body.velocity = body.velocity / 2;
+            body.velocity = Vector3.zero;
+        }
     }
     // Vector2 Overload
     public void Move(Vector2 velocity){Move(new Vector3(velocity.x, 0f, velocity.y));}

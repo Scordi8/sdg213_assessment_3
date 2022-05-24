@@ -19,9 +19,9 @@ public class PlayerInput : MonoBehaviour
     {
         if (CanMove && movement)
         {
+            // Check if moving
             Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             movement.Move(direction * MovementSpeed);
         }
-
     }
 }

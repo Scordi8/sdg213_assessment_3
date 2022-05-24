@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cca0e31ac5e2f49b72c339455a9b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseConstantMovement: 1
+  UseConstantMovement: 0
   direction: {x: 1, y: 0, z: 0}
   MovementSpeed: 7
   UseOrientation: 0
@@ -149,8 +149,8 @@ MonoBehaviour:
   RotationAxis: {x: 0, y: 0, z: 0}
   RotationSpeed: 100
   UseLimits: 1
-  PositionalVelocityLimit: 20
-  AngularVelocityLimit: 20
+  PositionalVelocityLimit: 5
+  AngularVelocityLimit: 5
   RotateToVelocity: 0
   TurningSpeed: 5
 --- !u!54 &102669811
@@ -182,6 +182,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &102669814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102669809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922132b22ed45c048b3fc0b255a3a81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanMove: 1
+  MovementSpeed: 5
 --- !u!1 &126751139
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +298,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3696997921617879554, guid: 081b1b9c17eb1ae46b4d0ec2274f44f7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7890934990100600896, guid: 081b1b9c17eb1ae46b4d0ec2274f44f7, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
@@ -330,6 +348,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8239054635297871540, guid: 081b1b9c17eb1ae46b4d0ec2274f44f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456040690981093012, guid: 081b1b9c17eb1ae46b4d0ec2274f44f7, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

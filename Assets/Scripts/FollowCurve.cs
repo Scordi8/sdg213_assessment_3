@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BezierCurve))]
 public class FollowCurve : MonoBehaviour
 {
+    [SerializeField]
+    
     // Start is called before the first frame update
     void Start()
     {

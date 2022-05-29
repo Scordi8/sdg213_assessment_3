@@ -44,13 +44,13 @@ public class BezierCurveEditor : Editor
 			
 			if(GUILayout.Button("Add Point"))
 			{
-				Undo.RegisterSceneUndo("Add Point");
-				
 				GameObject pointObject = new GameObject("Point "+pointsProp.arraySize);
 				pointObject.transform.parent = curve.transform;
 				pointObject.transform.localPosition = Vector3.zero;
 				BezierPoint newPoint = pointObject.AddComponent<BezierPoint>();
-				
+
+				Undo.RegisterCreatedObjectUndo(pointObject, "Add Point");
+
 				newPoint.curve = curve;
 				newPoint.handle1 = Vector3.right*0.1f;
 				newPoint.handle2 = -Vector3.right*0.1f;
@@ -87,10 +87,10 @@ public class BezierCurveEditor : Editor
 		
 		if(GUILayout.Button("X", GUILayout.Width(20)))
 		{
-			Undo.RegisterSceneUndo("Remove Point");
 			pointsProp.MoveArrayElement(curve.GetPointIndex(point), curve.pointCount - 1);
 			pointsProp.arraySize--;
-			DestroyImmediate(point.gameObject);
+
+			Undo.DestroyObjectImmediate(point.gameObject);
 			return;
 		}
 
@@ -150,7 +150,7 @@ public class BezierCurveEditor : Editor
 		Vector3 newPointPos = EditorGUILayout.Vector3Field("Position : ", point.transform.localPosition);
 		if(newPointPos != point.transform.localPosition)
 		{
-			Undo.RegisterUndo(point.transform, "Move Bezier Point");
+			Undo.RegisterCompleteObjectUndo(point.transform, "Move Bezier Point");
 			point.transform.localPosition = newPointPos;
 		}
 		

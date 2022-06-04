@@ -37,8 +37,6 @@ public class CameraMotion : MonoBehaviour
         Transform new_tform = yaw.transform;
         Vector3 target = new Vector3(pos.x, yaw.transform.position.y, pos.z);
         yaw.transform.LookAt(target);
-        Vector3 angles = yaw.transform.eulerAngles;
-        yaw.transform.eulerAngles = new Vector3(angles.x, Mathf.Clamp(angles.y, -maxAngle * Mathf.Deg2Rad, maxAngle * Mathf.Deg2Rad), angles.z);
         pitch.transform.LookAt(pos);
         
     }

@@ -1022,6 +1022,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 649692357654523029, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1066,12 +1070,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6907527961406232253, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: useDebug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907527961406232253, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: showLines
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9032023164331256552, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
       propertyPath: m_Name
       value: Scanner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+--- !u!1 &603112929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9082653207096379387, guid: 19476415859919e4591a18c9086ef19a, type: 3}
+  m_PrefabInstance: {fileID: 628406174}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &628406174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1123,6 +1140,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 999185558467733343, guid: 19476415859919e4591a18c9086ef19a, type: 3}
+      propertyPath: rigRoot
+      value: 
+      objectReference: {fileID: 603112929}
     - target: {fileID: 1345922980314227552, guid: 19476415859919e4591a18c9086ef19a, type: 3}
       propertyPath: m_Name
       value: Player

@@ -4,33 +4,71 @@ using UnityEngine;
 
 public class Scanner : MonoBehaviour
 {
+    [Header("Scanner Settings")]
     [SerializeField]
-    private bool useDebug = false;
+    public int requiredHits = 100;
+    [SerializeField]
+    public float relaxspeed = 0.25f;
 
-    MeshCollider area;
+    [Header("Debug Options")]
+    public bool useDebug = false;
+    [ConditionalHide("useDebug", true)]
+    public bool showLines = false;
+    [ConditionalHide("useDebug", "showLines", true)]
+    public Color fail = Color.red;
+    [ConditionalHide("useDebug", "showLines", true)]
+    public Color hit = Color.green;
+
+    private LineRenderer line;
     private GameObject overlappingbody;
+    private int pointcount;
+    private float hits = 0f;
 
 
-    // Start is called before the first frame update
-    void Start()
+    
+
+
+    private void Start()
     {
-        area = GetComponent<MeshCollider>();
-        
+        if (showLines)
+        {
+            line = this.gameObject.AddComponent(typeof(LineRenderer)) as LineRenderer;
+            line.positionCount = 2;
+            line.widthMultiplier = 0.05f;
+            
+        }
     }
-    private int loopover(int a, int b, int c)
-    {
-        while (a < b) { a = c - a; }
-        while (a > c) { a = a - c; }    
-        return a;
-    }
+
 
     private void FixedUpdate()
     {
         if (overlappingbody != null)
         {
-            if (overlappingbody.GetComponent<IScannable>() != null)
+            IScannable iscan = overlappingbody.GetComponent<IScannable>();
+            if (iscan != null)
             {
-                if (overlappingbody.GetComponent<IScannable>().trace(this.transform.position)) { Debug.Log("Hit"); };
+                if (iscan.trace(this.transform.position))
+                    {
+                    hits++;
+                    if (showLines)
+                    {
+                        iscan.draw(this.transform.position, line);
+                        line.material.color = hit;
+                    }
+
+                    if (hits >= requiredHits)
+                        {
+                            Debug.Log("Player Found!!");
+                        } 
+                    }
+                else {
+                        hits -= relaxspeed;
+
+                    if (showLines)
+                    {
+                        line.material.color = fail;
+                    }
+                }
             }
         }
     }
@@ -39,18 +77,21 @@ public class Scanner : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         if (useDebug) { Debug.Log(this.name + " has begun overlapping with " + collider.name); }
-        if (collider.tag == "Player")
+        if (collider.GetComponent<IScannable>() != null)
         {
             overlappingbody = collider.gameObject;
+            pointcount = overlappingbody.GetComponent<IScannable>().pointcount();
+            hits = 0f;
         } 
     }
 
     private void OnTriggerExit(Collider collider)
     {
         if (useDebug) { Debug.Log(this.name + " has stopped overlapping with " + collider.name); }
-        if (collider.tag == "Player")
+        if (collider.GetComponent<IScannable>() != null)
         {
             overlappingbody = null;
+            hits = 0f;
         }
     }
 

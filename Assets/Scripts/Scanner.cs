@@ -10,8 +10,7 @@ public class Scanner : MonoBehaviour
     MeshCollider area;
     private GameObject overlappingbody;
 
-    private int index = 0;
-    private int ccount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,19 +28,10 @@ public class Scanner : MonoBehaviour
     {
         if (overlappingbody != null)
         {
-            int connected = 0;
-            for (int i = 0; i < Mathf.Clamp(ccount, 0, 10); i++)
+            if (overlappingbody.GetComponent<IScannable>() != null)
             {
-                
-                Vector3 to = overlappingbody.transform.GetChild(index).gameObject.transform.position;
-                Vector3 from = this.transform.position;
-                if (!Physics.Linecast(from, to))
-                {
-                    connected++;
-                }
-                index = loopover(index + 1, 0, ccount);
+                if (overlappingbody.GetComponent<IScannable>().trace(this.transform.position)) { Debug.Log("Hit"); };
             }
-            Debug.Log(connected);
         }
     }
 
@@ -51,9 +41,6 @@ public class Scanner : MonoBehaviour
         if (useDebug) { Debug.Log(this.name + " has begun overlapping with " + collider.name); }
         if (collider.tag == "Player")
         {
-            index = 0;
-            ccount = collider.gameObject.transform.childCount-1;
-            Debug.Log("count = " + ccount.ToString());
             overlappingbody = collider.gameObject;
         } 
     }
@@ -63,8 +50,6 @@ public class Scanner : MonoBehaviour
         if (useDebug) { Debug.Log(this.name + " has stopped overlapping with " + collider.name); }
         if (collider.tag == "Player")
         {
-            index = 0;
-            ccount = 0;
             overlappingbody = null;
         }
     }

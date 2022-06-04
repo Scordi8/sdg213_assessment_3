@@ -4,9 +4,8 @@ using System.Collections;
 
 /* This code is not originally mine.
  * Source : https://www.brechtos.com/hiding-or-disabling-inspector-properties-using-propertydrawers-within-unity-5/
- * I have made modifications to allow for a second condition
- * 
- * If at any point, more then 2 conditions are required, inform Scott (Scordi8#0001, me, who wrote this comment) and I'll re-write code for unlimited conditions.
+ * Modifications have been made
+
  */
 
 [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
@@ -19,6 +18,7 @@ public class ConditionalHideAttribute : PropertyAttribute
     public string ConditionalSourceField2 = "";
     public string[] MultiConditionalField;
     public bool usemulti = false;
+    public bool invert = false;
     //TRUE = Hide in inspector / FALSE = Disable in inspector 
     public bool HideInInspector = false;
 
@@ -35,6 +35,12 @@ public class ConditionalHideAttribute : PropertyAttribute
         this.ConditionalSourceField = conditionalSourceField;
         this.HideInInspector = hideInInspector;
     }
+    public ConditionalHideAttribute(string conditionalSourceField, bool hideInInspector, bool invert)
+    {
+        this.ConditionalSourceField = conditionalSourceField;
+        this.HideInInspector = hideInInspector;
+        this.invert = invert;
+    }
 
     // Overload #2, adds a second conditional field, otherwise identical to overload #1
     public ConditionalHideAttribute(string conditionalSourceField, string conditionalSourceField2, bool hideInInspector)
@@ -44,13 +50,27 @@ public class ConditionalHideAttribute : PropertyAttribute
         this.HideInInspector = hideInInspector;
     }
 
+    public ConditionalHideAttribute(string conditionalSourceField, string conditionalSourceField2, bool hideInInspector, bool invert)
+    {
+        this.ConditionalSourceField = conditionalSourceField;
+        this.ConditionalSourceField2 = conditionalSourceField2;
+        this.HideInInspector = hideInInspector;
+        this.invert = invert;
+    }
+
     // Overload #3, uses a string[] instead of set values. can use any amount
     public ConditionalHideAttribute(string[] ConditionalSourceFields, bool hideInInspector)
     {
-
         this.MultiConditionalField = ConditionalSourceFields;
         this.usemulti = true;
         this.HideInInspector = hideInInspector;
+    }
+    public ConditionalHideAttribute(string[] ConditionalSourceFields, bool hideInInspector, bool invert)
+    {
+        this.MultiConditionalField = ConditionalSourceFields;
+        this.usemulti = true;
+        this.HideInInspector = hideInInspector;
+        this.invert = invert;
     }
 #endif
 }

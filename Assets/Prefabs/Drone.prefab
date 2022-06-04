@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 567839302274134210}
-  - component: {fileID: 8671662887729367613}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Enemy
@@ -32,19 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8671662887729367613
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8894998451548248297}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.34, y: 0.76, z: 0.58}
-  m_Center: {x: 0, y: 0.76, z: 0}
 --- !u!1001 &8403311739256855043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -161,6 +147,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.13, y: 0.39, z: 0.24}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &6007256933641548042
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673904642759550802}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4688590174225256279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,16 +188,3 @@ MonoBehaviour:
   _X: 1
   _Y: 0
   _Z: 1
---- !u!135 &6007256933641548042
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8673904642759550802}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}

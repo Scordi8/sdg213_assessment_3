@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoDoor : MonoBehaviour, IDetectTag
+public class AutoDoor : MonoBehaviour
 {
     // Allows the editor to change the detected tag
     [SerializeField] private string tagToDetect = "Player";
@@ -20,6 +20,6 @@ public class AutoDoor : MonoBehaviour, IDetectTag
     public void DetectTag(string tag)
     {
         // Debug
-        Debug.Log("poggers");
+        Debug.Log("Open Door");
     }
 }

@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     private EngineBase movement;
     [SerializeField] private bool CanMove = true;
     [SerializeField] private float MovementSpeed = 200;
+    
     // Start is called before the first frame update
     void Start()
     {

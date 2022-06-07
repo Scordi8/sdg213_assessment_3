@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //DEBUG: An enumator could be used to sort thru the types of items
+[RequireComponent(typeof(Collision))]
 public class ItemPickup : MonoBehaviour
 {
     // Allow the item to be changed by the level designer
@@ -17,7 +18,11 @@ public class ItemPickup : MonoBehaviour
         }
     }
 
-    // HandlePlayerPickup handles all of the actions after a player has been collided with
+
+    /// <summary>
+    /// HandlePlayerPickup handles all of the actions after a player has been collided with
+    /// </summary>
+    /// <param name="player">GameObject to give the item</param> 
     private void PickupItem(GameObject player)
     {
         // Get the playerItem 
@@ -30,7 +35,8 @@ public class ItemPickup : MonoBehaviour
         else
         {
             // Set the players item to the item type
-            player.GetComponent<CurrentItem>() = ItemType;
+                //player.GetComponent<CurrentItem>() = ItemType; // you can't set a component that doesn't exist to an integer man
+            player.AddComponent<CurrentItem>().setItem(ItemType);
         }
     }
 }

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6078795874202894595}
+  - component: {fileID: 4972450492165210350}
   - component: {fileID: 9039329570290709270}
   m_Layer: 0
   m_Name: ItemCollectable
@@ -33,6 +34,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &4972450492165210350
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602771336429151702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9039329570290709270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce27bfc96025854c96ea831ab99a1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemType: 0
 --- !u!1 &7455704061248282039
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class ItemPickup : MonoBehaviour
     [SerializeField] private int ItemType = 0;
 
     // Try to pickup item when colliding with it
-    void OnTriggerEnter(Collider2D pickupRadius)
+    void OnTriggerEnter(Collider pickupRadius)
     {
         if (pickupRadius.gameObject.tag == "Player")
         {

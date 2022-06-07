@@ -1,4 +1,5 @@
 Shader "Custom/DebugSurface"
+
 {
     Properties
     {
@@ -7,65 +8,45 @@ Shader "Custom/DebugSurface"
         _LineSize ("Line Size", float) = 0.1
     }
     SubShader {
-                
-      Pass {
         CGPROGRAM
+        #pragma surface surf Lambert
+        #pragma target 3.0
+        
+         struct Input {
+            float2 uv;
+            float3 worldPos;
+         };
 
         fixed4 _Primary;
         fixed4 _Secondary;
         float _LineSize;
 
-         #pragma vertex vert  
-         #pragma fragment frag 
-
-         struct vertexInput {
-            float4 vertex : POSITION;
-         };
-         struct vertexOutput {
-            float4 pos : SV_POSITION;
-            float4 position_in_world_space : TEXCOORD0;
-         };
-
-
-
-         vertexOutput vert(vertexInput input) 
-         {
-            vertexOutput output; 
- 
-            output.pos =  UnityObjectToClipPos(input.vertex);
-            output.position_in_world_space = 
-               mul(unity_ObjectToWorld, input.vertex);
-               // transformation of input.vertex from object 
-               // coordinates to world coordinates;
-            return output;
-         }
-
-         bool compare(float a, float b, float c)
+         bool compare (float a, float b, float c)
          {
             return a > b-c && a < b+c;
          }
  
-         float4 frag(vertexOutput input) : COLOR 
+         void surf (Input IN, inout SurfaceOutput o)
          {
-            float3 pos = frac(input.position_in_world_space);
+            float3 pos = frac(IN.worldPos);
+
             
             fixed4 c = _Primary;
 
-            if (compare(pos.x, 0, _LineSize))
+            if (compare(pos[0], 0, _LineSize))
                 {
                 c = max(c, _Secondary);
                 }
-            if (compare(pos.z, 0, _LineSize))
+            if (compare(pos[2], 0, _LineSize))
                 {
                 c = max(c, _Secondary);
                 }
 
-            return c;
+            o.Albedo = c;
 
-         }
- 
-         ENDCG  
-      }
-   }
+        }
+        ENDCG  
+      
+        }
     FallBack "Diffuse"
 }

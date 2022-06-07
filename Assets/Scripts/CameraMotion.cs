@@ -26,7 +26,6 @@ public class CameraMotion : MonoBehaviour
     public GameObject pitch;
 
     private int turndir = 1;
-    private float turnspeedramp = 0;
 
     private Vector3[] bounds;
 
@@ -75,8 +74,8 @@ public class CameraMotion : MonoBehaviour
                 float angle = yaw.transform.eulerAngles.y;
                 if (angle > 180) { angle = angle - 360; }
 
-                if (angle > bounds[1].y) { turndir = -1; turnspeedramp = 0; }
-                if (angle < bounds[0].y) { turndir = 1; turnspeedramp = 0; }
+                if (angle > bounds[1].y) { turndir = -1; }
+                if (angle < bounds[0].y) { turndir = 1; }
                 yaw.transform.eulerAngles = new Vector3(0, Mathf.Clamp(angle, -_turnAngle, _turnAngle), 0);
 
                 yaw.transform.eulerAngles = Vector3.Lerp(yaw.transform.eulerAngles, new Vector3(yaw.transform.eulerAngles.x, yaw.transform.eulerAngles.y + (_turnspeed*turndir), yaw.transform.eulerAngles.z), 0.5f);

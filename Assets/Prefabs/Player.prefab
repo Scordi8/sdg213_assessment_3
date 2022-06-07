@@ -259,7 +259,6 @@ GameObject:
   - component: {fileID: 2091617019439730843}
   - component: {fileID: 999185558467733343}
   - component: {fileID: 277434928010660521}
-  - component: {fileID: 3945954351382366399}
   - component: {fileID: 4086478463790734078}
   m_Layer: 0
   m_Name: Player
@@ -398,17 +397,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2fc41f850e9a53847a7e1a92c05f0730, type: 3}
   - {fileID: 8300000, guid: 3ec15ea47256ce143b9f440da70e5239, type: 3}
   audioSource: {fileID: 4086478463790734078}
-  audioListener: {fileID: 3945954351382366399}
+  audioListener: {fileID: 0}
   Cooldown: 0
   Rate: 0.2
---- !u!81 &3945954351382366399
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345922980314227552}
-  m_Enabled: 1
 --- !u!82 &4086478463790734078
 AudioSource:
   m_ObjectHideFlags: 0

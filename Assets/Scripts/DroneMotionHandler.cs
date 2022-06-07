@@ -2,17 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneMotionHandler : MonoBehaviour
+public class DroneMotionHandler : MonoBehaviour, IUseScanner
 {
-    // Start is called before the first frame update
-    void Start()
+    FollowCurve track_curve;
+    FollowPlayer track_player;
+
+    public bool hasfound;
+
+    bool IUseScanner.hasfound { get; set; }
+
+    private void Start()
     {
-        
+        track_curve = GetComponent<FollowCurve>();
+        track_player = GetComponent<FollowPlayer>();
+    }
+    public void OnTargetFound(GameObject target)
+    {
+        if (hasfound == false)
+        {
+            hasfound = true;
+            track_curve.enabled = false;
+            track_player.enabled = true;
+            track_player.SetTarget(target);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnTargetLost()
     {
-        
+        if (hasfound == true)
+        {
+            hasfound= false;
+            track_player.EndTarget(this);
+        }
+    }
+
+    public void ResumeCurve()
+    {
+        track_curve.enabled = true;
+        track_player.enabled = false;
     }
 }

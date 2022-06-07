@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    [SerializeField]
-    public bool active { get { return active; } set { active = value; this.enabled = active; } }
 
     private EngineBase engine;
     private Rigidbody body;
+    DroneMotionHandler motionHandler;
 
     private GameObject target;
     private Stack<Vector3> trackpoints;
@@ -18,11 +17,25 @@ public class FollowPlayer : MonoBehaviour
     private int mode = 1; // 1 is track, 0 is retreat
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         engine = GetComponentInChildren<EngineBase>();
         body = engine.GetComponent<Rigidbody>();
+        enabled = false;
+    }
 
+    public void SetTarget(GameObject _target)
+    {
+        target = _target;
+        trackpoints = new Stack<Vector3>();
+        trackpoints.Push(body.transform.position);
+        enabled = true;
+        mode = 1;
+    }
+    public void EndTarget(DroneMotionHandler handler)
+    {
+        motionHandler = handler;
+        mode = 0;
     }
 
     // Update is called once per frame
@@ -30,6 +43,7 @@ public class FollowPlayer : MonoBehaviour
     {
         if (mode == 1) // If tracking
         {
+            Debug.Log(trackpoints.Peek());
             if (!Physics.Linecast(trackpoints.Peek(), body.transform.position))
             {
                 trackpoints.Push(body.transform.position);
@@ -52,5 +66,10 @@ public class FollowPlayer : MonoBehaviour
         }
         Vector2 diff = (ppos - bpos).normalized;
         engine.Move(diff);
+
+        if (trackpoints.Count == 0)
+        {
+            motionHandler.ResumeCurve();
+        }
     }
 }

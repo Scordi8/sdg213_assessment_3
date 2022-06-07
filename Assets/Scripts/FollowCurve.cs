@@ -5,9 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(BezierCurve))]
 public class FollowCurve : MonoBehaviour
 {
-    [SerializeField]
-    public bool active { get { return active; } set { active = value; this.enabled = active; } }
-
     private EngineBase engine;
     private Rigidbody body;
     private BezierCurve curve;

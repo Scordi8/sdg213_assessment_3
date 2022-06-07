@@ -8,6 +8,8 @@ public class Scanner : MonoBehaviour
     [Header("Scanner Settings")]
 #endif
     [SerializeField]
+    public DroneMotionHandler master;
+    [SerializeField]
     public int requiredHits = 100;
     [SerializeField]
     public float relaxspeed = 0.25f;
@@ -40,6 +42,8 @@ public class Scanner : MonoBehaviour
     private LineRenderer line;
     private GameObject overlappingbody;
     private float hits = 0f;
+
+
     
 
     private void Start()
@@ -62,7 +66,10 @@ public class Scanner : MonoBehaviour
     /// </summary>
     private void OnPlayerFound()
     {
-        Debug.Log("Player Found!!");
+        if (master.hasfound == false)
+        {
+            master.OnTargetFound(overlappingbody);
+        }
     }
 
     /// <summary>
@@ -101,6 +108,10 @@ public class Scanner : MonoBehaviour
                         { // Draw lines, set their colour to the serialized fail colour
                             line.material.color = fail;
                         }
+                        if (hits >= 0 && master.hasfound == true)
+                        {
+                            master.OnTargetLost();
+                        }
                     }
                     if (spotlight != null) { spotlight.color = Color.Lerp(calmColour, alertColour, Mathf.Clamp(hits* scansPerFrame / requiredHits, 0, 1)); }
                 }
@@ -131,6 +142,11 @@ public class Scanner : MonoBehaviour
 
             if (line != null) { line.enabled = false; } // Make the line unrenderable
             if (spotlight != null) {spotlight.color = calmColour; }
+
+            if (master.hasfound == true)
+                {
+                    master.OnTargetLost();
+                }
         }
     }
 

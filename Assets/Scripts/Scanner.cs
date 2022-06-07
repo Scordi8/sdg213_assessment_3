@@ -13,6 +13,12 @@ public class Scanner : MonoBehaviour
     public float relaxspeed = 0.25f;
     [SerializeField][Range(1, 50)]
     public int scansPerFrame = 1;
+    [SerializeField]
+    private Light spotlight;
+    [SerializeField]
+    public Color calmColour = Color.cyan;
+    [SerializeField]
+    public Color alertColour = Color.yellow;
 
 #if UNITY_EDITOR
     [Header("Debug Options")]
@@ -34,15 +40,21 @@ public class Scanner : MonoBehaviour
     private LineRenderer line;
     private GameObject overlappingbody;
     private float hits = 0f;
-
+    
 
     private void Start()
     {
-        if (showLines) // If the user wants to show the lines, this add a LineRender child for later use
+        if (showLines && useDebug) // If the user wants to show the lines, this add a LineRender child for later use
         {
             line = this.gameObject.AddComponent(typeof(LineRenderer)) as LineRenderer;
             line.widthMultiplier = 0.05f;
+            line.enabled = false;
         }
+        GetComponent<MeshRenderer>().enabled = useDebug;
+        if (spotlight != null)
+        {
+            spotlight.color = calmColour;
+                }
     }
 
     /// <summary>
@@ -69,26 +81,28 @@ public class Scanner : MonoBehaviour
                     if (iscan.trace(this.transform.position)) // if the scanner can draw an uninturrupted line from itself to a bone of the player
                     {
                         hits++;
-                        if (showLines)
+                        if (showLines && useDebug)
                         { // Draw lines, set their colour to the serialized hit colour
                             iscan.draw(this.transform.position, line);
                             line.material.color = hit;
                         }
 
-                        if (hits >= requiredHits)
+                        if (hits*scansPerFrame >= requiredHits)
                         {
                             OnPlayerFound();
                         }
+                        
                     }
                     else
                     {
-                        hits -= relaxspeed;
+                        hits -= relaxspeed * scansPerFrame;
 
-                        if (showLines)
+                        if (showLines && useDebug)
                         { // Draw lines, set their colour to the serialized fail colour
                             line.material.color = fail;
                         }
                     }
+                    if (spotlight != null) { spotlight.color = Color.Lerp(calmColour, alertColour, Mathf.Clamp(hits* scansPerFrame / requiredHits, 0, 1)); }
                 }
             }
         }
@@ -103,7 +117,7 @@ public class Scanner : MonoBehaviour
             overlappingbody = collider.gameObject;
             hits = 0f; // Reset hits
 
-            if (line != null) { line.positionCount = 2; } // Make the line renderable
+            if (line != null) { line.enabled = true; } // Make the line renderable
         } 
     }
 
@@ -115,7 +129,8 @@ public class Scanner : MonoBehaviour
             overlappingbody = null; // Nullify the overlapping body to prevent the linecasting reaching player after they leave trigger
             hits = 0f; // Reset hits
 
-            if (line != null) { line.positionCount = 0; } // Make the line unrenderable
+            if (line != null) { line.enabled = false; } // Make the line unrenderable
+            if (spotlight != null) {spotlight.color = calmColour; }
         }
     }
 

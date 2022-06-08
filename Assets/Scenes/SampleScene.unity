@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -341,6 +341,11 @@ Transform:
   m_Father: {fileID: 1432601263}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &234086900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8221991031132224227, guid: 9f89d972beb9ecb428b3782ab5238567, type: 3}
+  m_PrefabInstance: {fileID: 608498935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &265052678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1245,6 +1250,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4193663193751604150, guid: 9f89d972beb9ecb428b3782ab5238567, type: 3}
+      propertyPath: m_Constraints
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769183585190955834, guid: 9f89d972beb9ecb428b3782ab5238567, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815718612080259433, guid: 9f89d972beb9ecb428b3782ab5238567, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815718612080259433, guid: 9f89d972beb9ecb428b3782ab5238567, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8221991031132224227, guid: 9f89d972beb9ecb428b3782ab5238567, type: 3}
+      propertyPath: m_Name
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 8243365205669950316, guid: 9f89d972beb9ecb428b3782ab5238567, type: 3}
       propertyPath: m_Name
       value: AutoDoor
@@ -1293,8 +1318,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4193663193751604150, guid: 9f89d972beb9ecb428b3782ab5238567, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9f89d972beb9ecb428b3782ab5238567, type: 3}
+--- !u!1 &608498936 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8243365205669950316, guid: 9f89d972beb9ecb428b3782ab5238567, type: 3}
+  m_PrefabInstance: {fileID: 608498935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &608498937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608498936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b514a4ddb07f8374585105e90da8b14c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToDetect: Player
+  Door: {fileID: 234086900}
+  useDebug: 0
+  OpenPosition: {x: 0, y: 2, z: 0}
 --- !u!1001 &628406174
 PrefabInstance:
   m_ObjectHideFlags: 0

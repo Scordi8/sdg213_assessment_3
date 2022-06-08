@@ -18,7 +18,10 @@ public class FollowCurve : MonoBehaviour
         curve = GetComponent<BezierCurve>();
 
         points = curve.GetAnchorPoints();
+        
     }
+
+    
 
     // Update is called once per frame
     void Update()

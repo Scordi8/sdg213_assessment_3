@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Scanner : MonoBehaviour
 {
 #if UNITY_EDITOR 
     [Header("Scanner Settings")]
 #endif
-    [SerializeField]
-    public DroneMotionHandler master;
+    [SerializeField, SerializeReference]
+    public Component _master;
+    private IUseScanner master;
     [SerializeField]
     public int requiredHits = 100;
     [SerializeField]
@@ -48,6 +50,8 @@ public class Scanner : MonoBehaviour
 
     private void Start()
     {
+        master = _master.GetComponent<IUseScanner>();
+        if (master == null) { throw new System.Exception("Object " + _master.name + " has no IUseScanner Interface"); }
         if (showLines && useDebug) // If the user wants to show the lines, this add a LineRender child for later use
         {
             line = this.gameObject.AddComponent(typeof(LineRenderer)) as LineRenderer;

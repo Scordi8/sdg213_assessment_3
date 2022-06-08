@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CopyTransform : MonoBehaviour
 {
-    // I can't believe I need to make this script.
+    // I can't believe I needed to make this script.
 
     [SerializeField]
     GameObject source;

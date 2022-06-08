@@ -8,7 +8,7 @@ public class CameraMotionHandler : MonoBehaviour, IUseScanner
 
     public bool hasfound;
 
-    bool IUseScanner.hasfound { get; set; }
+    bool IUseScanner.hasfound { get => hasfound; set => hasfound = value; }
 
     private void Start()
     {;
@@ -18,6 +18,7 @@ public class CameraMotionHandler : MonoBehaviour, IUseScanner
     }
     public void OnTargetFound(GameObject target)
     {
+        Debug.Log("Player was found woooo");
         if (hasfound == false)
         {
             hasfound = true;
@@ -27,6 +28,7 @@ public class CameraMotionHandler : MonoBehaviour, IUseScanner
 
     public void OnTargetLost()
     {
+        Debug.Log("Player Lost Noooo");
         if (hasfound == true)
         {
             hasfound = false;

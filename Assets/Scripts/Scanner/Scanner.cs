@@ -77,6 +77,17 @@ public class Scanner : MonoBehaviour
     }
 
     /// <summary>
+    /// OnPlayerFound is the event to call for when the player has been lost
+    /// </summary>
+    private void OnPlayerLost()
+    {
+        if (master.hasfound == true)
+        {
+            master.OnTargetLost();
+        }
+    }
+
+    /// <summary>
     /// Update is the per frame function
     /// Scanner's update function will call the overlapping body's IScannable's draw method and linecast. if enough casts are hit over time, the OnPlayerFound method is called on self
     /// </summary>
@@ -112,9 +123,9 @@ public class Scanner : MonoBehaviour
                         { // Draw lines, set their colour to the serialized fail colour
                             line.material.color = fail;
                         }
-                        if (hits >= 0 && master.hasfound == true)
+                        if (hits >= 0)
                         {
-                            master.OnTargetLost();
+                            OnPlayerLost();
                         }
                     }
                     if (spotlight != null) { spotlight.color = Color.Lerp(calmColour, alertColour, Mathf.Clamp(hits* scansPerFrame / requiredHits, 0, 1)); }
@@ -147,10 +158,7 @@ public class Scanner : MonoBehaviour
             if (line != null) { line.enabled = false; } // Make the line unrenderable
             if (spotlight != null) {spotlight.color = calmColour; }
 
-            if (master.hasfound == true)
-                {
-                    master.OnTargetLost();
-                }
+            OnPlayerLost();
         }
     }
 

@@ -9,7 +9,7 @@ public class DroneMotionHandler : MonoBehaviour, IUseScanner
 
     public bool hasfound;
 
-    bool IUseScanner.hasfound { get; set; }
+    bool IUseScanner.hasfound { get => hasfound; set => hasfound = value; }
 
     private void Start()
     {

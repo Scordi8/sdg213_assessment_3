@@ -45,7 +45,9 @@ public class CameraMotion : MonoBehaviour
         
     }
 
+#nullable enable
     public void setTracker(GameObject? target)
+#nullable restore
     {
         if (target != null)
         {

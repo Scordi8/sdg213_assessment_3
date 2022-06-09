@@ -16,34 +16,34 @@ public class Scanner : MonoBehaviour
     public int requiredHits = 100;
     [SerializeField]
     [Tooltip("Hit reduction if player is obscured/hiding")]
-    public float relaxspeed = 0.25f;
+    private float relaxspeed = 0.25f;
     [SerializeField][Range(1, 50)]
-    public int scansPerFrame = 1;
+    private int scansPerFrame = 1;
     [SerializeField]
     private Light spotlight;
     [SerializeField]
     [Tooltip("Scan colour when nothing is seen")]
-    public Color calmColour = Color.cyan;
+    private Color calmColour = Color.cyan;
     [SerializeField]
     [Tooltip("Scan colour when player is seen")]
-    public Color alertColour = Color.yellow;
+    private Color alertColour = Color.yellow;
 
 #if UNITY_EDITOR
     [Header("Debug Options")]
 #endif
-    public bool useDebug = false;
+    private bool useDebug = false;
 #if UNITY_EDITOR
     [ConditionalHide("useDebug", true)]
 #endif
-    public bool showLines = false;
+    private bool showLines = false;
 #if UNITY_EDITOR
     [ConditionalHide("useDebug", "showLines", true)]
 #endif
-    public Color fail = Color.red;
+    private Color fail = Color.red;
 #if UNITY_EDITOR
     [ConditionalHide("useDebug", "showLines", true)]
 #endif
-    public Color hit = Color.green;
+    private Color hit = Color.green;
 
     private LineRenderer line;
     private GameObject overlappingbody;

@@ -18,7 +18,6 @@ public class CameraMotion : MonoBehaviour
     [ConditionalHide("_static", true, true)]
     [Tooltip("Oscillation turning speed")]
     public float _turnspeed = 1f;
-    [ConditionalHide("_static", true, true)]
     [Tooltip("Pitch offset for oscillation")]
     public float PitchOffset = 0f;
 
@@ -66,12 +65,10 @@ public class CameraMotion : MonoBehaviour
         if (target != null)
         {
             track = target;
-            canTrack = true;
         }
         else
         {
             track = null;
-            canTrack = false;
         }
     }
 
@@ -94,8 +91,8 @@ public class CameraMotion : MonoBehaviour
                 if (angle < bounds[0].y) { turndir = 1; }
                 yaw.transform.eulerAngles = new Vector3(0, Mathf.Clamp(angle, -_turnAngle, _turnAngle), 0) + initialYaw;
                 yaw.transform.eulerAngles = Vector3.Lerp(yaw.transform.eulerAngles, new Vector3(yaw.transform.eulerAngles.x, yaw.transform.eulerAngles.y + (_turnspeed*turndir), yaw.transform.eulerAngles.z), 0.5f);
-                pitch.transform.eulerAngles = new Vector3(PitchOffset, pitch.transform.eulerAngles.y, pitch.transform.eulerAngles.z);
             }
+            pitch.transform.eulerAngles = new Vector3(PitchOffset, pitch.transform.eulerAngles.y, pitch.transform.eulerAngles.z);
         }
     }
 }

@@ -49,6 +49,7 @@ MonoBehaviour:
   canTrack: 1
   _turnAngle: 30
   _turnspeed: 1
+  PitchOffset: 20
   track: {fileID: 0}
   maxAngle: 50
   yaw: {fileID: 2850747778260807001}
@@ -195,8 +196,8 @@ PrefabInstance:
       value: 3.7925532
       objectReference: {fileID: 0}
     - target: {fileID: 1129628025250644808, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
-      propertyPath: m_SpotAngle
-      value: 80.55267
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
       propertyPath: m_RootOrder

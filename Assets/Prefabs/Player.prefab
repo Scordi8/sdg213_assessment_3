@@ -398,8 +398,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3ec15ea47256ce143b9f440da70e5239, type: 3}
   audioSource: {fileID: 4086478463790734078}
   audioListener: {fileID: 0}
-  Cooldown: 0
+  Volume: 0.4
+  pitchVarience: 0.2
   Rate: 0.2
+  Cooldown: 0
 --- !u!82 &4086478463790734078
 AudioSource:
   m_ObjectHideFlags: 0

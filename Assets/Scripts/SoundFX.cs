@@ -18,6 +18,12 @@ public class SoundFX : MonoBehaviour
     private AudioListener audioListener;
 
     [SerializeField]
+    [Tooltip("How far can the pitch be altered")]
+    private float Volume = 1f;
+    [SerializeField]
+    [Tooltip("How far can the pitch be altered")]
+    private float pitchVarience = 0.2f;
+    [SerializeField]
     [Tooltip("Time between each sound effect")]
     private float Rate;
 
@@ -38,6 +44,7 @@ public class SoundFX : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.volume = Volume;
     }
 
     // Update is called once per frame
@@ -49,7 +56,7 @@ public class SoundFX : MonoBehaviour
             // Get random audio clip ID from array
             int index = Random.Range(0, audioClips.Length);
             // Set random audio pitch
-            audioSource.pitch = 1f + Random.Range(-0.2f, 0.2f);
+            audioSource.pitch = 1f + Random.Range(-pitchVarience, pitchVarience);
             // Set audio in AudioSource component
             audioSource.clip = audioClips[index];
             audioSource.Play();

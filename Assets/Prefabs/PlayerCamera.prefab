@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c010feed35dd0f840bdb94a863a0d5e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToTrack: {fileID: 0}
+  objectToTrack: {fileID: 1345922980314227552, guid: 19476415859919e4591a18c9086ef19a, type: 3}
   trackSpeed: 1
   CameraOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &8946005256221216816
@@ -204,3 +204,6 @@ MonoBehaviour:
   AngularVelocityLimit: 20
   RotateToVelocity: 0
   TurningSpeed: 5
+  _X: 1
+  _Y: 0
+  _Z: 1

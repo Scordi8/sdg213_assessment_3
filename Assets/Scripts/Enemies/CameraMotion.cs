@@ -42,11 +42,13 @@ public class CameraMotion : MonoBehaviour
     private int turndir = 1;
 
     private Vector3[] bounds;
+    private Vector3 initialYaw;
 
     // Start is called before the first frame update
     void Start()
     {
-        bounds = new Vector3[] {new Vector3(0, yaw.transform.eulerAngles.y -_turnAngle, 0), new Vector3(0, yaw.transform.eulerAngles.y + _turnAngle, 0) };
+        bounds = new Vector3[] {new Vector3(0, -_turnAngle, 0), new Vector3(0, _turnAngle, 0) };
+        initialYaw = yaw.transform.eulerAngles;
     }
     
     void trackto(Vector3 pos)
@@ -85,12 +87,12 @@ public class CameraMotion : MonoBehaviour
         {
             if (!_static)
             {
-                float angle = yaw.transform.eulerAngles.y;
+                float angle = yaw.transform.eulerAngles.y - initialYaw.y;
                 if (angle > 180) { angle = angle - 360; }
 
                 if (angle > bounds[1].y) { turndir = -1; }
                 if (angle < bounds[0].y) { turndir = 1; }
-                yaw.transform.eulerAngles = new Vector3(0, Mathf.Clamp(angle, -_turnAngle, _turnAngle), 0);
+                yaw.transform.eulerAngles = new Vector3(0, Mathf.Clamp(angle, -_turnAngle, _turnAngle), 0) + initialYaw;
                 yaw.transform.eulerAngles = Vector3.Lerp(yaw.transform.eulerAngles, new Vector3(yaw.transform.eulerAngles.x, yaw.transform.eulerAngles.y + (_turnspeed*turndir), yaw.transform.eulerAngles.z), 0.5f);
                 pitch.transform.eulerAngles = new Vector3(PitchOffset, pitch.transform.eulerAngles.y, pitch.transform.eulerAngles.z);
             }

@@ -6,24 +6,35 @@ public class CameraMotion : MonoBehaviour
 {
     [Header("Motion options")]
     [SerializeField]
+    [Tooltip("Is the camera stationry")]
     public bool _static = false;
     [SerializeField]
+    [Tooltip("Can the Camera track an object")]
     public bool canTrack = true;
 
     [ConditionalHide("_static", true, true)]
-    public float _turnAngle = 30f;
+    [Tooltip("Maximum angle to oscillate between")]
+    private float _turnAngle = 30f;
     [ConditionalHide("_static", true, true)]
-    public float _turnspeed = 1f;
+    [Tooltip("Oscillation turning speed")]
+    private float _turnspeed = 1f;
 
     [ConditionalHide("canTrack", true)]
+    [Tooltip("The GameObject to track")]
     public GameObject track;
     [ConditionalHide("canTrack", true)]
-    public float maxAngle = 50;
+    [Tooltip("Maximum tracking angle")]
+    private float maxAngle = 50;
 
 
     [Header("Bones")]
-    public GameObject yaw;
-    public GameObject pitch;
+    [SerializeField]
+    [Tooltip("GameObject/Bone controlling the Yaw")]
+    private GameObject yaw;
+    [SerializeField]
+    [Tooltip("GameObject/Bone controlling the Pitch")]
+    private GameObject pitch;
+
 
     private int turndir = 1;
 
@@ -32,17 +43,15 @@ public class CameraMotion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         bounds = new Vector3[] {new Vector3(0, -_turnAngle, 0), new Vector3(0, _turnAngle, 0) };
     }
 
     void trackto(Vector3 pos)
     {
         Transform new_tform = yaw.transform;
-        Vector3 target = new Vector3(pos.x, yaw.transform.position.y, pos.z);
+        Vector3 target = new Vector3(pos.x, Mathf.Clamp(yaw.transform.position.y, -maxAngle, maxAngle), pos.z);
         yaw.transform.LookAt(target);
         pitch.transform.LookAt(pos);
-        
     }
 
 #nullable enable

@@ -24,7 +24,9 @@ public class SoundFX : MonoBehaviour
 #if UNITY_EDITOR
     [Header("Debug Options")]
 #endif
+#pragma warning disable CS0414 // Suppress Unused warning
     private bool useDebug = false;
+#pragma warning restore CS0414 // Revoke Suppression
 #if UNITY_EDITOR
     [ConditionalHide("useDebug", true)]
 #endif

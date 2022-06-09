@@ -67,7 +67,8 @@ public class Scanner : MonoBehaviour
         if (spotlight != null)
         {
             spotlight.color = calmColour;
-                }
+        }
+        GetComponentInChildren<Light>().range = transform.localScale.x * 12;
     }
 
     /// <summary>

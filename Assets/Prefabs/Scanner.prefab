@@ -221,12 +221,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _master: {fileID: 0}
-  requiredHits: 100
-  relaxspeed: 0.25
+  requiredHits: 150
+  relaxspeed: 0.5
   scansPerFrame: 1
   spotlight: {fileID: 1129628025250644808}
   calmColour: {r: 0, g: 0.07450981, b: 1, a: 1}
   alertColour: {r: 1, g: 0.0627451, b: 0.015686274, a: 1}
+  lightRange: 0
   useDebug: 0
   showLines: 0
   fail: {r: 1, g: 0, b: 0, a: 1}

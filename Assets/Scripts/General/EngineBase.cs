@@ -21,7 +21,7 @@ public class EngineBase : MonoBehaviour
     [ConditionalHide("UseConstantMovement", true)]
     [Tooltip("Direction of the constant Movement")]
 #endif
-    private Vector3 direction = new Vector3(0, 0, 0);
+    public Vector3 direction = new Vector3(0, 0, 0);
 #if UNITY_EDITOR
     [ConditionalHide("UseConstantMovement", true)]
     [Tooltip("Speed of the constant Movement")]
@@ -31,12 +31,12 @@ public class EngineBase : MonoBehaviour
     [ConditionalHide("UseConstantMovement", true)]
     [Tooltip("Whether the velocity is applied relative to object orientation")]
 #endif
-    private bool UseOrientation = true;
+    public bool UseOrientation = true;
 #if UNITY_EDITOR
     [ConditionalHide("UseConstantMovement", "UseOrientation", true)]
     [Tooltip("Offset to the orientation of the object to apply the velocity to")]
 #endif
-    private Vector3 OrientationOffset = new Vector3(0, 0, 0); // Offset for manual adjustment if the orientation of the object doesn't match directions
+    public Vector3 OrientationOffset = new Vector3(0, 0, 0); // Offset for manual adjustment if the orientation of the object doesn't match directions
 
 
     // Editor exposed fields for controlling constant rotation
@@ -49,7 +49,7 @@ public class EngineBase : MonoBehaviour
     [ConditionalHide("UseConstantRotation", true)]
     [Tooltip("Axis of the constant rotation")]
 #endif
-    private Vector3 RotationAxis = new Vector3(0, 0, 0);
+    public Vector3 RotationAxis = new Vector3(0, 0, 0);
 #if UNITY_EDITOR
     [ConditionalHide("UseConstantRotation", true)]
     [Tooltip("Speed of the constant rotation")]
@@ -62,45 +62,45 @@ public class EngineBase : MonoBehaviour
     [Tooltip("Enable Limiting")]
 #endif
 #pragma warning disable CS0414 // Suppress unused field warning - It's used by ConditionalHide
-    private bool UseLimits = true;
+    public bool UseLimits = true;
 #pragma warning restore CS0414 // Restore warning
 #if UNITY_EDITOR
     [ConditionalHide("UseLimits", true)]
     [Tooltip("Whether to limit the linear velocity")]
 #endif
-    private float PositionalVelocityLimit = 20f;
+    public float PositionalVelocityLimit = 20f;
 #if UNITY_EDITOR
     [ConditionalHide("UseLimits", true)]
     [Tooltip("Whether to limit the angular velocity")]
 #endif
-    private float AngularVelocityLimit = 20f;
+    public float AngularVelocityLimit = 20f;
 
 #if UNITY_EDITOR
     [Header("Misc")]
     [SerializeField]
     [Tooltip("Orient the body to Velocity")]
 #endif
-    private bool RotateToVelocity = false;
+    public bool RotateToVelocity = false;
 #if UNITY_EDITOR
     [ConditionalHide("RotateToVelocity")]
     [Tooltip("Speed to orient at")]
 #endif
-    private float TurningSpeed = 5f;
+    public float TurningSpeed = 5f;
 #if UNITY_EDITOR
     [ConditionalHide("RotateToVelocity")]
     [Tooltip("Whether to consider the X velocity ")]
 #endif
-    private bool _X = true;
+    public bool _X = true;
 #if UNITY_EDITOR
     [ConditionalHide("RotateToVelocity")]
     [Tooltip("Whether to consider the Y velocity ")]
 #endif
-    private bool _Y = false;
+    public bool _Y = false;
 #if UNITY_EDITOR
     [ConditionalHide("RotateToVelocity")]
     [Tooltip("Whether to consider the Z velocity ")]
 #endif
-    private bool _Z = true;
+    public bool _Z = true;
     private Vector3 allowedAxis;
 
     private Rigidbody body;

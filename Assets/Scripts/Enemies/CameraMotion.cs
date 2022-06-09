@@ -14,26 +14,29 @@ public class CameraMotion : MonoBehaviour
 
     [ConditionalHide("_static", true, true)]
     [Tooltip("Maximum angle to oscillate between")]
-    private float _turnAngle = 30f;
+    public float _turnAngle = 30f;
     [ConditionalHide("_static", true, true)]
     [Tooltip("Oscillation turning speed")]
-    private float _turnspeed = 1f;
+    public float _turnspeed = 1f;
+    [ConditionalHide("_static", true, true)]
+    [Tooltip("Pitch offset for oscillation")]
+    public float PitchOffset = 0f;
 
     [ConditionalHide("canTrack", true)]
     [Tooltip("The GameObject to track")]
     public GameObject track;
     [ConditionalHide("canTrack", true)]
     [Tooltip("Maximum tracking angle")]
-    private float maxAngle = 50;
+    public float maxAngle = 50;
 
 
     [Header("Bones")]
     [SerializeField]
     [Tooltip("GameObject/Bone controlling the Yaw")]
-    private GameObject yaw;
+    public GameObject yaw;
     [SerializeField]
     [Tooltip("GameObject/Bone controlling the Pitch")]
-    private GameObject pitch;
+    public GameObject pitch;
 
 
     private int turndir = 1;
@@ -43,9 +46,9 @@ public class CameraMotion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bounds = new Vector3[] {new Vector3(0, -_turnAngle, 0), new Vector3(0, _turnAngle, 0) };
+        bounds = new Vector3[] {new Vector3(0, yaw.transform.eulerAngles.y -_turnAngle, 0), new Vector3(0, yaw.transform.eulerAngles.y + _turnAngle, 0) };
     }
-
+    
     void trackto(Vector3 pos)
     {
         Transform new_tform = yaw.transform;
@@ -88,8 +91,8 @@ public class CameraMotion : MonoBehaviour
                 if (angle > bounds[1].y) { turndir = -1; }
                 if (angle < bounds[0].y) { turndir = 1; }
                 yaw.transform.eulerAngles = new Vector3(0, Mathf.Clamp(angle, -_turnAngle, _turnAngle), 0);
-
                 yaw.transform.eulerAngles = Vector3.Lerp(yaw.transform.eulerAngles, new Vector3(yaw.transform.eulerAngles.x, yaw.transform.eulerAngles.y + (_turnspeed*turndir), yaw.transform.eulerAngles.z), 0.5f);
+                pitch.transform.eulerAngles = new Vector3(PitchOffset, pitch.transform.eulerAngles.y, pitch.transform.eulerAngles.z);
             }
         }
     }

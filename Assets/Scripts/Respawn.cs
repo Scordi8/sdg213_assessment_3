@@ -11,15 +11,9 @@ public class Respawn : MonoBehaviour
     enemyTag is used for when the player interacts with an enemy*/
     public string checkpointTag;
     public string enemyTag;
+    public string objectiveTag;
 
-    //During each update, if the F key is pressed, calls the toRespawn function
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            toRespawn();
-        }
-    }
+    public WinCondition levelUI;
 
     /*When colliding with an object, checks to see what the tag is
     if it is the checkpointTag, sets the spawnPosition to the location of the object it collided with
@@ -34,10 +28,14 @@ public class Respawn : MonoBehaviour
         {
             toRespawn();
         }
+        if (collision.tag == objectiveTag)
+        {
+            levelUI.toWin();
+        }
     }
 
     //When called, sends itself to the spawnPosition
-    void toRespawn()
+    public void toRespawn()
     {
         gameObject.transform.position = spawnPosition;
     }

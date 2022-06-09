@@ -6,10 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class UIS_MainMenu : MonoBehaviour
 {
+    public int level1 = 0;
+    public int tempCurrentLevel = 0;
+    void Start()
+    {
+        PlayerPrefs.SetInt("currentLevel", level1);
+    }
+
     //When the PlayGame function is called, move to the next level, then ensure the game is running
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        tempCurrentLevel = PlayerPrefs.GetInt("currentLevel");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + tempCurrentLevel);
         Time.timeScale = 1f;
     }
 

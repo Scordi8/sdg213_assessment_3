@@ -49,12 +49,13 @@ public class PlayerScannable : MonoBehaviour, IScannable
     public bool trace(Vector3 from, int index)
     {
         // Do the raycast
-        Physics.Linecast(from, points[index].transform.position, out RaycastHit hitData);
-
-        // Chech if collision object is Player
-        if (hitData.collider.gameObject == gameObject)
+        if (Physics.Linecast(from, points[index].transform.position, out RaycastHit hitData))
         {
-            return true;
+            // Chech if collision object is Player
+            if (hitData.collider.gameObject == gameObject)
+            {
+                return true;
+            }
         }
         return false;
     }

@@ -9,6 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 567839302274134210}
+  - component: {fileID: 8175622832228517129}
+  - component: {fileID: 2102819296412054205}
+  - component: {fileID: 1873206219284008090}
+  - component: {fileID: 5983008262650123607}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Enemy
@@ -31,6 +35,142 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8175622832228517129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894998451548248297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6896cf3d684a84b49a186843adab924a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasfound: 0
+--- !u!114 &2102819296412054205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894998451548248297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c151ec58e0d22704b9af972191dddffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeedMultiplier: 1
+--- !u!114 &1873206219284008090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894998451548248297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4234cd2c43978e041bbe9323c195c4bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolution: 30
+  drawColor: {r: 1, g: 1, b: 1, a: 1}
+  _close: 0
+  points: []
+--- !u!114 &5983008262650123607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894998451548248297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbdcc6b8ffcc251428d4ae2724a611d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeedMultiplier: 1
+--- !u!1001 &1454087002244407550
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8292313271700766184}
+    m_Modifications:
+    - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071072
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071064
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680629219551080208, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6907527961406232253, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: _master
+      value: 
+      objectReference: {fileID: 567839302274134210}
+    - target: {fileID: 9032023164331256552, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+      propertyPath: m_Name
+      value: Scanner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+--- !u!1 &7599196938480257558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9032023164331256552, guid: 4e1bb123ec634d44d996c1b174c5369b, type: 3}
+  m_PrefabInstance: {fileID: 1454087002244407550}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7772683086203427265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7599196938480257558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5974d3874f4dafe47bb52beb8cb147ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 8673904642759550802}
+  PositionOffset: {x: 0, y: 0, z: 0}
+  RotationOffset: {x: 0, y: -90, z: 0}
 --- !u!1001 &8403311739256855043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -173,18 +313,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UseConstantMovement: 0
-  direction: {x: 0, y: 0, z: 0}
   MovementSpeed: 100
-  UseOrientation: 1
-  OrientationOffset: {x: 0, y: 0, z: 0}
   UseConstantRotation: 0
-  RotationAxis: {x: 0, y: 0, z: 0}
   RotationSpeed: 100
   UseLimits: 1
-  PositionalVelocityLimit: 20
-  AngularVelocityLimit: 20
   RotateToVelocity: 1
-  TurningSpeed: 5
-  _X: 1
-  _Y: 0
-  _Z: 1

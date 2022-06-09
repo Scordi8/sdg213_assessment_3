@@ -28,6 +28,9 @@ public class Scanner : MonoBehaviour
     [SerializeField]
     [Tooltip("Scan colour when player is seen")]
     public Color alertColour = Color.yellow;
+    [SerializeField]
+    [Tooltip("How bright the attached light is (0 for default)")]
+    public int lightRange = 0;
 
 #if UNITY_EDITOR
     [Header("Debug Options")]
@@ -68,7 +71,16 @@ public class Scanner : MonoBehaviour
         {
             spotlight.color = calmColour;
         }
-        GetComponentInChildren<Light>().range = transform.localScale.x * 12;
+
+        // Check if a custom lightRange is set
+        if (lightRange != 0)
+        {
+            GetComponentInChildren<Light>().range = transform.localScale.x * lightRange;
+        }
+        else
+        {
+            GetComponentInChildren<Light>().range = transform.localScale.x * 12;
+        }
     }
 
     /// <summary>

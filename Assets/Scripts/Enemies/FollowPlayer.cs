@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
+    [SerializeField] float MovementSpeedMultiplier = 1f;
 
     private EngineBase engine;
     private Rigidbody body;
@@ -65,7 +66,7 @@ public class FollowPlayer : MonoBehaviour
             trackpoints.Pop();
         }
         Vector2 diff = (ppos - bpos).normalized;
-        engine.Move(diff);
+        engine.Move(diff * MovementSpeedMultiplier);
 
         if (trackpoints.Count == 0)
         {

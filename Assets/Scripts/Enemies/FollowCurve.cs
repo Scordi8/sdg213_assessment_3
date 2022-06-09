@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(BezierCurve))]
 public class FollowCurve : MonoBehaviour
 {
+    [SerializeField] float MovementSpeedMultiplier = 1f;
+
     private EngineBase engine;
     private Rigidbody body;
     private BezierCurve curve;
@@ -36,6 +38,6 @@ public class FollowCurve : MonoBehaviour
             if (index >= points.Length) { index = 0; }
         }
         Vector2 diff = (ppos - bpos).normalized;
-        engine.Move(diff);
+        engine.Move(diff * MovementSpeedMultiplier);
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8230684031401148414}
   - component: {fileID: 1129628025250644808}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 170
   m_Range: 5
   m_SpotAngle: 83
   m_InnerSpotAngle: 21.80208
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 2508107444184964969}
   - component: {fileID: 649692357654523029}
   - component: {fileID: 6907527961406232253}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Scanner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,8 +225,8 @@ MonoBehaviour:
   relaxspeed: 0.25
   scansPerFrame: 1
   spotlight: {fileID: 1129628025250644808}
-  calmColour: {r: 0, g: 1, b: 1, a: 1}
-  alertColour: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  calmColour: {r: 0, g: 0.07450981, b: 1, a: 1}
+  alertColour: {r: 1, g: 0.0627451, b: 0.015686274, a: 1}
   useDebug: 0
   showLines: 0
   fail: {r: 1, g: 0, b: 0, a: 1}

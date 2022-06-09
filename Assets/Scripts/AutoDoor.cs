@@ -12,12 +12,13 @@ public class AutoDoor : MonoBehaviour
     [SerializeField] private Vector3 OpenPosition;
     private Vector3 ClosePosition;
     private Vector3 TargetPosition;
-    [SerializeField] private float openSpeed = 0.1f;
+    [SerializeField] private float openSpeed;
 
     private void Start()
     {
         // Set the close position to the default door state
         ClosePosition = Door.transform.position;
+        TargetPosition = ClosePosition;
     }
 
     private void OnTriggerEnter(Collider collider)

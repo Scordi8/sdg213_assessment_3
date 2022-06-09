@@ -12,6 +12,7 @@ public class AutoDoor : MonoBehaviour
     [SerializeField] private Vector3 OpenPosition;
     private Vector3 ClosePosition;
     private Vector3 TargetPosition;
+    [SerializeField] private float openSpeed = 0.1f;
 
     private void Start()
     {
@@ -56,7 +57,7 @@ public class AutoDoor : MonoBehaviour
         }
 
         // Liner interpolation
-        Door.transform.position = Vector3.Lerp(Door.transform.position, TargetPosition, 0.05f);
+        Door.transform.position = Vector3.Lerp(Door.transform.position, TargetPosition, openSpeed);
     }
 
 }

@@ -12,16 +12,20 @@ public class Scanner : MonoBehaviour
     public Component _master;
     private IUseScanner master;
     [SerializeField]
+    [Tooltip("How many hits until the player is seen")]
     public int requiredHits = 100;
     [SerializeField]
+    [Tooltip("Hit reduction if player is obscured/hiding")]
     public float relaxspeed = 0.25f;
     [SerializeField][Range(1, 50)]
     public int scansPerFrame = 1;
     [SerializeField]
     private Light spotlight;
     [SerializeField]
+    [Tooltip("Scan colour when nothing is seen")]
     public Color calmColour = Color.cyan;
     [SerializeField]
+    [Tooltip("Scan colour when player is seen")]
     public Color alertColour = Color.yellow;
 
 #if UNITY_EDITOR

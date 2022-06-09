@@ -4,12 +4,33 @@ using UnityEngine;
 
 public class SoundFX : MonoBehaviour
 {
-    public AudioClip[] audioClips;
-    public AudioSource audioSource;
-    public AudioListener audioListener;
+#if UNITY_EDITOR
+    [Header("Sound Effect Settings")]
+#endif
+    [SerializeField]
+    [Tooltip("Audio Clips to use")]
+    private AudioClip[] audioClips;
+    [SerializeField]
+    [Tooltip("Audio Source component")]
+    private AudioSource audioSource;
+    [SerializeField]
+    [Tooltip("Audio Listener component")]
+    private AudioListener audioListener;
 
-    public float Cooldown;
-    public float Rate;
+    [SerializeField]
+    [Tooltip("Time between each sound effect")]
+    private float Rate;
+
+#if UNITY_EDITOR
+    [Header("Debug Options")]
+#endif
+    private bool useDebug = false;
+#if UNITY_EDITOR
+    [ConditionalHide("useDebug", true)]
+#endif
+    [SerializeField]
+    [Tooltip("")]
+    private float Cooldown;
 
     // Start is called before the first frame update
     void Start()

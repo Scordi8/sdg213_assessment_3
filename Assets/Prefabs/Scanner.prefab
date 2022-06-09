@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f39738b1ebf97947921b9d810a6129a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  master: {fileID: 0}
+  _master: {fileID: 0}
   requiredHits: 100
   relaxspeed: 0.25
   scansPerFrame: 1

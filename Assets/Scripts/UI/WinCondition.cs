@@ -20,21 +20,14 @@ public class WinCondition : MonoBehaviour
         OnGameStateChange();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            toWin();
-        }
-    }
-
+    //When the toActive function is called, sets the game state to active and calls the OnGameStateChange
     public void toActive()
     {
         gameState = 0;
         OnGameStateChange();
     }
 
+    //When toWin is called, gets the current level in a temp value, adds 1 to the temp value, sets the game state to win, calls OnGameStateChange
     public void toWin()
     {
         tempCurrentLevel = PlayerPrefs.GetInt("currentLevel");
@@ -43,12 +36,18 @@ public class WinCondition : MonoBehaviour
         OnGameStateChange();
     }
 
+    //When toLose is called, sets the game state to lose and calls the OnGameStateChange
     public void toLose()
     {
         gameState = 2;
         OnGameStateChange();
     }
 
+    /* When called, creates actions based on what the game state is, these can have things added in future development
+     * If active is currently empty
+     * if won, sets the currentLevel to the temp value, then calls for PlayGame
+     * If lost, calls lose screen
+     * */
     public void OnGameStateChange()
     {
         if (gameState == 0)

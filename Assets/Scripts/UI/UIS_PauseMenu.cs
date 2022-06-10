@@ -88,25 +88,22 @@ public class UIS_PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
-    //LoadMainMenu first makes a debug log message saying MainMenu, then loads the scene number that is allocated to the MainMenuScene value
+    //LoadMainMenu loads the scene number that is allocated to the MainMenuScene value
     public void LoadMainMenu()
     {
-        Debug.Log("MainMenu");
         SceneManager.LoadScene(MainMenuScene);
     }
 
-    //When the QuitGame function is called, make a debug message saying it was called, then quit the game
+    //When the QuitGame function is called, it quits the game
     public void QuitGame()
     {
-        Debug.Log("Exit Game");
         Application.Quit(); //NOTE: Only works in build, not in editor
     }
 
-    //When the UItoRespawn function is called, says it has respawned, makes a debug message saying it was called, then call the toRespawn function from the player, and then runs the Resume function
+    //When the UItoRespawn function is called, says it has respawned, then call the toRespawn function from the player, and then runs the Resume function
     public void UItoRespawn()
     {
         respawned = true;
-        Debug.Log("RESPAWN FROM UI");
         player.toRespawn();
         Resume();
     }

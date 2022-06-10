@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/UI/SC_Main_Menu.unity
+    path: Assets/Scenes/UI scenes/SC_Main_Menu.unity
     guid: f435a324102f192458fd1f27e929b8ca
   - enabled: 1
     path: Assets/Scenes/Level_1.unity
     guid: d69aacb0203845644a21f2e95a18af6a
   - enabled: 1
-    path: Assets/UI/SC_YouWin.unity
+    path: Assets/Scenes/UI scenes/SC_YouWin.unity
     guid: f08bfa4a0dc0752469554ce9fffb5912
   - enabled: 1
-    path: Assets/UI/SC_Game_Over 1.unity
+    path: Assets/Scenes/UI scenes/SC_Game_Over 1.unity
     guid: e40c33113c4fca04c9148fbdd448969f
   m_configObjects: {}

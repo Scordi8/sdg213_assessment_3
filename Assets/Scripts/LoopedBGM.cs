@@ -24,14 +24,9 @@ public class LoopedBGM : MonoBehaviour
         this.SetSong(this.songToPlay, this.loopSeconds);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void SetSong(AudioClip song, float loopSeconds)
     {
+        // Make sure a music file is selected, then play it
         if (song != null)
         {
             this.songToPlay = song;

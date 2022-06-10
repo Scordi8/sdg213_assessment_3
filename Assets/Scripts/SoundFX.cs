@@ -37,17 +37,15 @@ public class SoundFX : MonoBehaviour
     [ConditionalHide("useDebug", true)]
 #endif
     [SerializeField]
-    [Tooltip("")]
+    [Tooltip("Editor visible cooldown number")]
     private float Cooldown;
 
-    // Start is called before the first frame update
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.volume = Volume;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Cooldown -= Time.deltaTime;

@@ -8,6 +8,7 @@ public class AutoDoor : MonoBehaviour
     [SerializeField] private string tagToDetect = "Player";
     [SerializeField] private GameObject Door;
     private GameObject overlappingbody;
+    [SerializeField] private bool useDebug = false;
     [SerializeField] private Vector3 OpenPosition;
     private Vector3 ClosePosition;
     private Vector3 TargetPosition;
@@ -22,6 +23,8 @@ public class AutoDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
+        if (useDebug) { Debug.Log(this.name + " has begun overlapping with " + collider.name); } // Debug log
+
         // Check to see if the collider is equal to the overlapping body
         if (collider.gameObject.tag == tagToDetect)
         {
@@ -34,6 +37,8 @@ public class AutoDoor : MonoBehaviour
 
     private void OnTriggerExit(Collider collider)
     {
+        if (useDebug) { Debug.Log(this.name + " has stopped overlapping with " + collider.name); } // Debug log
+        
         // Check to see if the collider is equal to the overlapping body
         if (collider.gameObject == overlappingbody)
         {

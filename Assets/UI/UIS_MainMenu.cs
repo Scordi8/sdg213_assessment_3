@@ -17,7 +17,7 @@ public class UIS_MainMenu : MonoBehaviour
     public void PlayGame()
     {
         tempCurrentLevel = PlayerPrefs.GetInt("currentLevel");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + tempCurrentLevel);
+        SceneManager.LoadScene(tempCurrentLevel);
         Time.timeScale = 1f;
     }
 
@@ -26,5 +26,12 @@ public class UIS_MainMenu : MonoBehaviour
     {
         Debug.Log("QUIT");
         Application.Quit(); //NOTE: Only works in build, not in editor
+    }
+
+    public void justStarted()
+    {
+        PlayerPrefs.SetFloat("checkpointX", -7f);
+        PlayerPrefs.SetFloat("checkpointY", 0f);
+        PlayerPrefs.SetFloat("checkpointZ", -16f);
     }
 }

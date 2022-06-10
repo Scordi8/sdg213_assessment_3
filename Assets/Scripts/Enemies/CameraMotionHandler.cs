@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMotionHandler : MonoBehaviour, IUseScanner
 {
@@ -23,6 +24,7 @@ public class CameraMotionHandler : MonoBehaviour, IUseScanner
         {
             hasfound = true;
             motion.setTracker(target);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         }
     }
 

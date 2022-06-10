@@ -4,35 +4,29 @@ using UnityEngine;
 
 public class CurrentItem : MonoBehaviour, Iitem
 {
+    // Set the item type to the default of null
     private int ?ItemType = null;
 
-    /// <summary>
-    /// Sets the Item type to the provided int
-    /// </summary>
-    /// <param name="_ItemType"></param>
+    // Call this when you set an Item
     public void setItem(int _ItemType)
     {
-        // this is where you'd do things -_- I'm watching you swhal
+        // Set the item type
         ItemType = _ItemType;
     }
 
-    /// <summary>
-    /// Returns the Item type of the component
-    /// </summary>
-    /// <returns>int</returns>
+    // Call this when you get an Item
     public int getItem()
     {
         return (int) ItemType;
     }
 
-    /// <summary>
-    /// Use the current item. returns: true, unless no item type is defined, then false
-    /// </summary>
-    /// <returns>bool</returns>
+    // Call this when you use an Item
     public bool useItem()
     {
+        // If their is no item type, return false
         if (ItemType == null) { return false; }
+        
+        // Return
         return true;
-        // Code for when item is used goes here :catyes:
     }
 }

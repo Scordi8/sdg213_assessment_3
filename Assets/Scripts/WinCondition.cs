@@ -8,6 +8,7 @@ public class WinCondition : MonoBehaviour
     //GameState dictates what condition the game is in. If the gameState is 0, it means the game is act, 1 means the player has won, and 2 means the player has lost
     int gameState = 0;
     int tempCurrentLevel = 0;
+    int loseLevel = 0;
     public UIS_MainMenu selfCanvas;
 
     /* At the start of the game
@@ -62,7 +63,8 @@ public class WinCondition : MonoBehaviour
 
         if (gameState == 2)
         {
-
+            PlayerPrefs.SetInt("currentLevel", tempCurrentLevel);
+            selfCanvas.PlayGame();
         }
     }
 }

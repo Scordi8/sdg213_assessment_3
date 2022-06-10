@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 999185558467733343}
   - component: {fileID: 277434928010660521}
   - component: {fileID: 4086478463790734078}
+  - component: {fileID: 7041966973590940034}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -498,6 +499,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7041966973590940034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345922980314227552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd5f552f03f01246b3b6846a5d0f467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPosition: {x: 0, y: 0, z: 0}
+  checkpointTag: Checkpoint
+  enemyTag: Enemy
+  objectiveTag: Objective
+  levelUI: {fileID: 911465055562894105, guid: d309bdfa4e62d9e48a57ece209f396fe, type: 3}
 --- !u!1 &1355803678169827686
 GameObject:
   m_ObjectHideFlags: 0

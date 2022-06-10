@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 160073644444727475}
   respawnUI: {fileID: 6109008519938292037}
-  player: {fileID: 6388754281546799459, guid: 19476415859919e4591a18c9086ef19a, type: 3}
+  player: {fileID: 7041966973590940034, guid: 19476415859919e4591a18c9086ef19a, type: 3}
   MainMenuScene: 0
 --- !u!114 &911465055562894105
 MonoBehaviour:
